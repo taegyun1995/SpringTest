@@ -9,5 +9,8 @@ import com.taegyun.test.mybatis.model.RealEstate;
 public interface RealEstateDAO {
 	
 	public RealEstate selectRealEstateList(@Param("id") int id);
+	
+	public RealEstate selectRealEstateList2(@Param("rentPrice") int rentPrice);
 
 }
+

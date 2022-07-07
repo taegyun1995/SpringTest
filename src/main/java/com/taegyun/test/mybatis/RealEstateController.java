@@ -10,16 +10,25 @@ import com.taegyun.test.mybatis.bo.RealEstateBO;
 import com.taegyun.test.mybatis.model.RealEstate;
 
 @Controller
+@RequestMapping("/mybatis/test01")
 public class RealEstateController {
 	
 	@Autowired
 	public RealEstateBO realestateBO;
 	
 	@ResponseBody
-	@RequestMapping("/mybatis/test01/1")
+	@RequestMapping("/1")
 	public RealEstate realestate(@RequestParam(value="id", defaultValue="22") int id) {
 		
 		RealEstate realestate = realestateBO.getRealEstate(id);
+		return realestate;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/2")
+	public RealEstate realesate2(@RequestParam(value="rentPrice", defaultValue="90") int rentPrice) {
+		
+		RealEstate realestate = realestateBO.getRealEstate(rentPrice);
 		return realestate;
 	}
 }

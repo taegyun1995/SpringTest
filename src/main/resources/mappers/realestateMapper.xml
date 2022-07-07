@@ -23,10 +23,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 			`id` = #{id}
 	
-	
-	
-	
-	
 	</select>
-
+	
+	<select id="selectRealEstateList2" resultType="com.taegyun.test.mybatis.model.RealEstate" parameterType="int">
+		SELECT
+			`id`
+			, `realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`real_estate`
+		WHERE
+			 #{rentPrice} >`rentPrice`;
+	</select>
+	
 </mapper>
