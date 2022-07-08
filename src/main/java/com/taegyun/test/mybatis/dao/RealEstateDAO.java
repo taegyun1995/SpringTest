@@ -1,5 +1,7 @@
 package com.taegyun.test.mybatis.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +12,7 @@ public interface RealEstateDAO {
 	
 	public RealEstate selectRealEstateList(@Param("id") int id);
 	
-	public RealEstate selectRealEstateList2(@Param("rentPrice") int rentPrice);
+	public List<RealEstate> selectRealEstateList2(@Param("rentPrice") int rentPrice);
 
 }
 

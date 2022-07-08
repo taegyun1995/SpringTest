@@ -1,5 +1,7 @@
 package com.taegyun.test.mybatis;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +28,9 @@ public class RealEstateController {
 	
 	@ResponseBody
 	@RequestMapping("/2")
-	public RealEstate realesate2(@RequestParam(value="rentPrice", defaultValue="90") int rentPrice) {
+	public List<RealEstate> realesate2(@RequestParam(value="rentPrice", defaultValue="90") int rentPrice) {
 		
-		RealEstate realestate = realestateBO.getRealEstate(rentPrice);
+		List<RealEstate> realestate = realestateBO.getRealEstate2(rentPrice);
 		return realestate;
 	}
 }

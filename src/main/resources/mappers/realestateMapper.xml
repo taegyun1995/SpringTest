@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM
 			`real_estate`
 		WHERE
-			 #{rentPrice} >`rentPrice`;
+			 #{rentPrice} > `rentPrice`
 	</select>
 	
 </mapper>

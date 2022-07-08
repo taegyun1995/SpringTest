@@ -24,7 +24,7 @@ public class RealEstateBO {
 	// rentPrice 파라미터
 	public List<RealEstate> getRealEstate2(int rentPrice) {
 		List<RealEstate> realestate = realestateDAO.selectRealEstateList2(rentPrice);
-		
+		System.out.println(realestate);
 		return realestate;
 	}
 	
