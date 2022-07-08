@@ -35,7 +35,8 @@ public class RealEstateController {
 	public List<RealEstate> realesate3(@RequestParam(value="area", defaultValue="90") int area,
 									   @RequestParam(value="price", defaultValue="130000") int price) {
 		
-		List<RealEstate> realestate = realestateBO.getRealEstate3(area, price);
-		return realestate;
+//		List<RealEstate> realestate = realestateBO.getRealEstate3(area, price);
+//		return realestate;
+		return realestateBO.getRealEstate3(area, price);
 	}
 }

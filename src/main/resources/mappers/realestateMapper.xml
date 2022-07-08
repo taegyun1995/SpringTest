@@ -26,23 +26,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectRealEstateList2" resultType="com.taegyun.test.mybatis.model.RealEstate" parameterType="int">
-		SELECT
-			`id`
-			, `realtorId`
-			, `address`
-			, `area`
-			, `type`
-			, `price`
-			, `rentPrice`
-			, `createdAt`
-			, `updatedAt`
-		FROM
-			`real_estate`
-		WHERE
-			 #{rentPrice} > `rentPrice`
+		<![CDATA[SELECT
+					`id`
+					, `realtorId`
+					, `address`
+					, `area`
+					, `type`
+					, `price`
+					, `rentPrice`
+					, `createdAt`
+					, `updatedAt`
+				FROM
+					`real_estate`
+				WHERE
+					`rentPrice` < #{rentPrice}]]>
 	</select>
 	
-	<select id="selectRealEstateList3" resultType="com.taegyun.test.mybatis.model.RealEstate" parameterType="int">
+	<select id="selectRealEstateList3" resultType="com.taegyun.test.mybatis.model.RealEstate" parameterType="map">
 		<![CDATA[SELECT
 					`id`
 					, `realtorId`
@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					`real_estate`
 				WHERE
 					`area` >= #{area} AND `price` <= #{price}
-				ORDER BY `createdAt` DESC]]>
+				ORDER BY `id` DESC]]>
 	</select>
 	
 </mapper>

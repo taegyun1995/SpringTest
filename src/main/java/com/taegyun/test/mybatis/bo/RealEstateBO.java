@@ -14,25 +14,25 @@ public class RealEstateBO {
 	@Autowired
 	private RealEstateDAO realestateDAO;
 	
-    // id 파라미터
+	// 전달받은 id 값인 realestate 정보전달
 	public RealEstate getRealEstate(int id) {
 		RealEstate realestate = realestateDAO.selectRealEstateList(id);
 		
 		return realestate;
 	}
 	
-	// rentPrice 파라미터
 	public List<RealEstate> getRealEstate2(int rentPrice) {
 		List<RealEstate> realestate = realestateDAO.selectRealEstateList2(rentPrice);
-		System.out.println(realestate);
+		
 		return realestate;
 	}
 	
-	// area, price 파라미터
 	public List<RealEstate> getRealEstate3(int area, int price) {
-		List<RealEstate> realestate = realestateDAO.selectRealEstateList3(area, price);
-		System.out.println(realestate);
-		return realestate;
+//		List<RealEstate> realestate = realestateDAO.selectRealEstateList3(area, price);
+//		
+//		return realestate;
+		
+		return realestateDAO.selectRealEstateList3(area, price);
 	}
 	
 }
