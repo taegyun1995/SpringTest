@@ -42,4 +42,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 #{rentPrice} > `rentPrice`
 	</select>
 	
+	<select id="selectRealEstateList3" resultType="com.taegyun.test.mybatis.model.RealEstate" parameterType="int">
+		<![CDATA[SELECT
+					`id`
+					, `realtorId`
+					, `address`
+					, `area`
+					, `type`
+					, `price`
+					, `rentPrice`
+					, `createdAt`
+					, `updatedAt`
+				FROM
+					`real_estate`
+				WHERE
+					`area` >= #{area} AND `price` <= #{price}
+				ORDER BY `createdAt` DESC]]>
+	</select>
+	
 </mapper>

@@ -13,6 +13,8 @@ public interface RealEstateDAO {
 	public RealEstate selectRealEstateList(@Param("id") int id);
 	
 	public List<RealEstate> selectRealEstateList2(@Param("rentPrice") int rentPrice);
+	
+	public List<RealEstate> selectRealEstateList3(@Param("area") int area, @Param("price") int price);
 
 }
 

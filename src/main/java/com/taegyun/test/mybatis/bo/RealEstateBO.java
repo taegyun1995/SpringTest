@@ -12,7 +12,7 @@ import com.taegyun.test.mybatis.model.RealEstate;
 public class RealEstateBO {
 	
 	@Autowired
-	public RealEstateDAO realestateDAO;
+	private RealEstateDAO realestateDAO;
 	
     // id 파라미터
 	public RealEstate getRealEstate(int id) {
@@ -24,6 +24,13 @@ public class RealEstateBO {
 	// rentPrice 파라미터
 	public List<RealEstate> getRealEstate2(int rentPrice) {
 		List<RealEstate> realestate = realestateDAO.selectRealEstateList2(rentPrice);
+		System.out.println(realestate);
+		return realestate;
+	}
+	
+	// area, price 파라미터
+	public List<RealEstate> getRealEstate3(int area, int price) {
+		List<RealEstate> realestate = realestateDAO.selectRealEstateList3(area, price);
 		System.out.println(realestate);
 		return realestate;
 	}
