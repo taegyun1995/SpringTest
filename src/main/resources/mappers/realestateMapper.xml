@@ -60,4 +60,69 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				ORDER BY `id` DESC]]>
 	</select>
 	
+	<insert id="insertRealEstate" parameterType="com.taegyun.test.mybatis.model.RealEstate">
+		INSERT INTO `real_estate`
+		(
+			`realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUES
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, now()
+			, now()
+		)
+	</insert>
+	
+	<insert id="insertRealEstate2" parameterType="map">
+		INSERT INTO `real_estate`
+		(
+			`realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUES
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+			, now()
+			, now()
+		)
+	</insert>
+	
+	<update id="updateRealEstate" parameterType="map">
+		UPDATE `real_estate`
+		SET
+			`type` = #{type}
+			, `price` = #{price}
+			, `updatedAt` = now()
+		WHERE
+			`id` = #{id}
+	</update>
+	
+	<delete id="deleteRealEstate" parameterType="map">
+		DELETE FROM 
+			`real_estate`
+		WHERE
+			`id` = #{id}
+	</delete>
+	
 </mapper>
