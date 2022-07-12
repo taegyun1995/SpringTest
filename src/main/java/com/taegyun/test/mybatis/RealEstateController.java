@@ -64,6 +64,7 @@ public class RealEstateController {
 	
 	@RequestMapping("/test03/1")
 	public String realestate6() {
+		
 		int count = realestateBO.amendRealEstate(26, "전세", 70000);
 		
 		return "수정 성공 : " + count;
