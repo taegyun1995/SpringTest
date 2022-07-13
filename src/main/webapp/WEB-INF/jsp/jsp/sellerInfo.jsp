@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매자 추가</title>
+<title>판매자 정보 조회</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -16,20 +16,11 @@
 
 	<div class="container">
 	
-		<h1>판매자 추가</h1>
+		<h1>판매자 정보</h1>
+		<img width=300 src="${seller.profileImage}">
+		<div class="display-4">${seller.nickname}</div>
+		<h2 class="text-warning">${seller.temperature}</h2>
 		
-		<form method="post" action="/jsp/seller/insert">
-			
-			<label>닉네임</label> <br>
-			<input type="text" name="nickname" class="form-control col-3"> <br>
-			<label>프로필 사진 url</label> <br>
-			<input type="text" name="profileImage" class="form-control col-8"> <br>
-			<label>온도</label> <br>
-			<input type="text" name="temperature" class="form-control col-3"> <br>
-			<input type=submit value="추가" class="btn btn-primary">
-		
-		</form>
-	
 	</div>
 	
 </body>
