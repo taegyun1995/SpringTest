@@ -27,7 +27,7 @@ public class JstlController {
 		musicRanking.add("거짓말");
 		musicRanking.add("보고싶다");
 		
-		model.addAttribute("music", musicRanking);
+		model.addAttribute("musicRanking", musicRanking);
 		
 		return "jstl/test02";
 	}
@@ -72,7 +72,7 @@ public class JstlController {
 		member.put("point", 420);
 		membership.add(member);
 		
-		model.addAttribute("member", membership);
+		model.addAttribute("memberList", membership);
 		
 		return "jstl/test03";
 	}

@@ -29,34 +29,35 @@
 					<th>포인트</th>
 				</tr>
 			</thead>
-			<c:forEach var="member" items="${member}" varStatus="status">
-				<tr>
-					<td>${member.name}</td>
-					<td>${member.phoneNumber}</td>
-					
-					<c:choose>
-						<c:when test="${member.grade eq 'VIP'}">
-							<td class="text-danger">${member.grade}</td>
-						</c:when>
-						<c:when test="${member.grade eq 'GOLD'}">
-							<td class="text-warning">${member.grade}</td>
-						</c:when>
-						<c:otherwise>
-							<td>${member.grade}</td>
-						</c:otherwise>
-					</c:choose>
-					
-					<c:choose>
-						<c:when test="${member.point >= 5000}">
-							<td class="text-primary">${member.point}P</td>
-						</c:when>
-						<c:otherwise>
-							<td>${member.point}P</td>
-						</c:otherwise>
-					</c:choose>
-				</tr>
-			</c:forEach>
+			
 			<tbody>
+				<c:forEach var="member" items="${memberList}">
+					<tr>
+						<td>${member.name}</td>
+						<td>${member.phoneNumber}</td>
+						
+						<c:choose>
+							<c:when test="${member.grade eq 'VIP'}">
+								<td class="text-danger">${member.grade}</td>
+							</c:when>
+							<c:when test="${member.grade eq 'GOLD'}">
+								<td class="text-warning">${member.grade}</td>
+							</c:when>
+							<c:otherwise>
+								<td>${member.grade}</td>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:choose>
+							<c:when test="${member.point >= 5000}">
+								<td class="text-primary">${member.point}P</td>
+							</c:when>
+							<c:otherwise>
+								<td>${member.point}P</td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+				</c:forEach>
 			</tbody>
 		
 		</table>
