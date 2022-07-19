@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.taegyun.test.jstl.dao.WeatherHistoryDAO">
+
+	<select id="selectWeather" resultType="com.taegyun.test.jstl.model.Weatherhistory" parameterType="map">
+		
+		SELECT 
+			`id`
+			, `date`
+			, `weather`
+			, `temperatures`
+			, `precipitation`
+			, `microDust`
+			, `windSpeed`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`weatherhistory`
+	
+	</select>
+
+</mapper>

@@ -46,7 +46,7 @@
 					<td> ${memb.name } </td>
 					<c:choose>
 						<c:when test="${fn:startsWith(phoneNumber, '010')}" >
-							<td> ${memb.phoneNumber} </td>
+							<td> ${phoneNumber} </td>
 						</c:when>
 						<c:otherwise>
 							<td> 유효하지 않은 전화번호 </td>

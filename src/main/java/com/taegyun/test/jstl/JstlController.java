@@ -1,17 +1,19 @@
 package com.taegyun.test.jstl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.taegyun.test.jstl.bo.WeatherhistoryBO;
 import com.taegyun.test.jstl.model.Member;
+import com.taegyun.test.jstl.model.Weatherhistory;
 
 @Controller
 @RequestMapping("/jstl")
@@ -176,6 +178,18 @@ public class JstlController {
 		model.addAttribute("memberList", members);
 		
 		return "jstl/test05";
+	}
+	
+	@Autowired
+	private WeatherhistoryBO weatherhistoryBO;
+	
+	@GetMapping("/test06")
+	public String test06(Model model) {
+		
+		List<Weatherhistory> weather =  weatherhistoryBO.searchWeather();
+		model.addAttribute("weatherhis", weather);
+		
+		return "jstl/test06";
 	}
 
 }

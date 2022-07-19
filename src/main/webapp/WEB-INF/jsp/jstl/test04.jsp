@@ -42,10 +42,8 @@
 		
 		</table>
 		
-		<br>
 		<hr>
-		<br>	
-	
+		
 		<h1> 2. 카드 명세서 </h1>
 		
 		<table class="table text-center">
@@ -61,16 +59,11 @@
 			
 			<tbody>
 			<c:forEach var="card" items="${cardBillList}">
+			<fmt:parseDate value="${card.date}" pattern="yyyy-MM-dd" var="date" />
 				<tr>
 					<td>${card.store}</td>
 					<td> <fmt:formatNumber value="${card.pay}" type="currency" /> </td>
-					
-					<td> 
-						<fmt:parseDate value="${card.date}" pattern="yyyy-MM-dd" var="date" />
-						<fmt:formatDate value="${date}" pattern="yyyy년 MM월 dd일"/>
-						
-					</td>
-					
+					<td> <fmt:formatDate value="${date}" pattern="yyyy년 M월 d일"/> </td>
 					<td>${card.installment}</td>
 				</tr>
 			</c:forEach>
