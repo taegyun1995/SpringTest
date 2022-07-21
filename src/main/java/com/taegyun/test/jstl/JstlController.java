@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taegyun.test.jstl.bo.WeatherhistoryBO;
 import com.taegyun.test.jstl.model.Member;
@@ -192,4 +194,25 @@ public class JstlController {
 		return "jstl/test06";
 	}
 
+	@GetMapping("/test07")
+	public String test07() {
+		return "jstl/test07";
+	}
+	
+	@ResponseBody
+	@GetMapping("/test07/insert")
+	public String test07Insert(
+			@RequestParam("date") String date
+			, @RequestParam("weather") String weather
+			, @RequestParam("microDust") String microDust
+			, @RequestParam("temperatures") double temperatures
+			, @RequestParam("precipitation") double precipitation
+			, @RequestParam("windSpeed") double windSpeed
+			, Model model) {
+		
+		int count = weatherhistoryBO.inputWeather(date, weather, microDust, temperatures, precipitation, windSpeed);
+		
+		return "삽입결과" + count;
+	}
+	
 }

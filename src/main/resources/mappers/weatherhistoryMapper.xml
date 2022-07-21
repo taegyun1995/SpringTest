@@ -22,5 +22,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			`weatherhistory`
 	
 	</select>
+	
+	<insert id="insertWeather" parameterType="map">
+		INSERT INTO
+			`weatherhistory`
+		(
+			 `date`
+			 , `weather`
+			 , `microDust`
+			 , `temperatures`
+			 , `precipitation`
+			 , `windSpeed`
+		)
+		VALUES
+		(
+			#{date}
+			, #{weather}
+			, #{microDust}
+			, #{temperatures}
+			, #{precipitation}
+			, #{windSpeed}
+		)
+	</insert>
 
 </mapper>
