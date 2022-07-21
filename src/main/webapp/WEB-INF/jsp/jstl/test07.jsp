@@ -27,7 +27,7 @@
 					<div class="form-inline justify-content-between pt-4 pl-5">
 						<div class="form-group">
 							<label class="d-flex align-items-center"> 날짜 </label>
-							<input type="text" name="date" class="form-control ml-3"/> 
+							<input type="text" placeholder="yyyy-MM-dd" name="date" class="form-control ml-3"/> 
 						</div>
 						 
 						<div class="form-group">
