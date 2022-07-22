@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+#wrap {
+	width : 800px;
+	height : 1200px;
+	margin : auto;
+}
+
+.logo {
+	height : 100px;
+	font-size : 40px;
+	font-weight : bold;
+}
+
+.storeNum {
+	font-size : 20px;
+}
+
+.storeadd {
+	font-size : 20px;
+}
+
+.footer-logo {
+	height : 60px;
+}
+
+.footer-num {
+	height : 60px;
+}

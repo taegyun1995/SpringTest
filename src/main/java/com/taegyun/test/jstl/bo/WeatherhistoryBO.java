@@ -18,7 +18,12 @@ public class WeatherhistoryBO {
 		return weatherhistoryDAO.selectWeather();
 	}
 	
-	public int inputWeather(String date, String weather, String microDust, double temperatures, double precipitation, double windSpeed) {
+	public int inputWeather(String date
+			, String weather
+			, String microDust
+			, double temperatures
+			, double precipitation
+			, double windSpeed) {
 		return weatherhistoryDAO.insertWeather(date, weather, microDust, temperatures, precipitation, windSpeed);
 	}
 

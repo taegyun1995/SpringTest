@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.taegyun.test.jstl.dao.NewReviewDAO">
+
+	<!-- <select id="selectNewReview" resultType="com.taegyun.test.jstl.model.NewReview">
+		SELECT
+			`id`
+			, `storeId`
+			, `menu`
+			, `userName`
+			, `point`
+			, `review`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`new_review`
+		ORDER BY `updatedAt` DESC
+	
+	
+	
+	
+	
+	</select> -->
+
+
+
+
+</mapper>

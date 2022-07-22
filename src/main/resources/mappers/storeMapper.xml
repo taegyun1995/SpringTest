@@ -5,9 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.taegyun.test.database.dao.StoreDAO">
+<mapper namespace="com.taegyun.test.jstl.dao.StoreDAO2">
 
-	<select id="selectStoreList" resultType="com.taegyun.test.database.model.Store">
+	<select id="selectStore" resultType="com.taegyun.test.jstl.model.Store">
 	
 		SELECT
 			`id`
