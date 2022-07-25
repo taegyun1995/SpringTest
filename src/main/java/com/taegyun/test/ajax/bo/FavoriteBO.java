@@ -22,7 +22,11 @@ public class FavoriteBO {
 	public int favoriteInsert(String name, String url) {
 		
 		return favoriteDAO.insertFavorite(name, url);
+	}
+	
+	public boolean favoriteOverLap(String url) {
 		
+		return favoriteDAO.selectFavoriteOverLap(url) != 0;
 	}
 
 }

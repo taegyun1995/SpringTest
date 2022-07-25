@@ -58,6 +58,23 @@ public class FavoriteController {
 		return "ajax/favoriteInput";
 	}
 	
+	@ResponseBody
+	@PostMapping("/overlap")
+	public Map<String, Boolean> favorOverLap(@RequestParam("url") String url) {
+		
+		Map<String, Boolean> result = new HashMap<>();
+		
+//		if(favoriteBO.favoriteOverLap(url)) {
+//			result.put("overlap", true);
+//		} else {
+//			result.put("overlap", false);
+//		}
+		
+		result.put("overlap", favoriteBO.favoriteOverLap(url));
+		 
+		return result;
+		
+	}
 	
 	
 

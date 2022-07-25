@@ -34,7 +34,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, now()
 		)
 	</insert>
-
+	
+	<select id="selectFavoriteOverLap" resultType="int" parameterType="string">
+		SELECT
+			count(1)
+		FROM
+			`url`
+		WHERE
+			`url` = #{url}
+	</select>
 
 
 

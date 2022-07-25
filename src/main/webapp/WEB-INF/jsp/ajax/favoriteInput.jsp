@@ -11,6 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<link rel="stylesheet" href="/favorstyle.css" type="text/css">
 </head>
 <body>
 	<div class="container">
@@ -19,14 +20,51 @@
 			<label> 제목 </label> <br>
 			<input type="text" class="form-control" name="name" id="name" /> <br>
 			<label> 주소 </label> <br>
-			<input type="text" class="form-control" name="url" id="url"/> <br>
-			<button type="button" class="btn btn-success btn-block" id="add"> 추가 </button>
+			<div class="d-flex">
+			<input type="text" class="form-control" name="url" id="url"/>
+			<button class="btn btn-info ml-2 overlapBtn" id="overlapBtn"> 중복확인 </button>
+			</div>
+			<span id="overlaptext" class="text-danger">중복된 url 입니다.</span>
+			<button type="button" class="btn btn-success btn-block mt-4" id="add"> 추가 </button>
 		<!--  </form>  -->
 	</div>
 	
 	<script>
 		
 	$(document).ready(function(){
+		
+		$("#overlapBtn").on("click", function(){
+			
+			let url = $("#url").val();
+			
+			if(url == "") {
+				alert("주소를 입력해주세요");
+				return;
+			}
+			
+			if(!url.startsWith("http://") && !url.startsWith("https://")) {
+				alert("주소를 제대로 입력해주세요..");
+				return;
+			}
+			
+			$.ajax({
+				url:"/ajax/favorite/overlap",
+				type:"Post",
+				data:{"url":url},
+				
+				success:function(data){
+					if(data.overlap){
+						$("#overlaptext").css("display", "block");
+					} else {
+						$("#overlaptext").css("display", "none");
+					}
+				},
+				error:function(){
+					alert("에러 발생!!");
+				}
+			});
+		});
+		
 		
 		$("#add").on("click", function(){
 			
