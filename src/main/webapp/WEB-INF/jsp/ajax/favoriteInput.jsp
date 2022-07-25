@@ -20,7 +20,7 @@
 			<input type="text" class="form-control" name="name" id="name" /> <br>
 			<label> 주소 </label> <br>
 			<input type="text" class="form-control" name="url" id="url"/> <br>
-			<button type="button" class="btn btn-success form-control" id="add"> 추가 </button>
+			<button type="button" class="btn btn-success btn-block" id="add"> 추가 </button>
 		<!--  </form>  -->
 	</div>
 	
@@ -37,25 +37,21 @@
 				alert("제목을 입력해주세요");
 				return;
 			}
+			
 			if(url == "") {
 				alert("주소를 입력해주세요");
 				return;
 			}
 			
-			if(!url.startsWith('http://')) {
-				alert("주소를 제대로 입력해주세요..");
-				return;
-			}
-			
-			if(!url.startsWith('https://')) {
+			if(!url.startsWith("http://") && !url.startsWith("https://")) {
 				alert("주소를 제대로 입력해주세요..");
 				return;
 			}
 			
 			$.ajax({
-				url: "/ajax/favorite/insert",
-				type: "GET",
-				data: {"name":name, "url":url},
+				url:"/ajax/favorite/insert",
+				type:"Post",
+				data:{"name":name, "url":url},
 				
 				success:function(data){
 					if(data.result == "success") {
@@ -74,8 +70,6 @@
 		});
 		
 	});
-	
-	
 	
 	</script>
 
