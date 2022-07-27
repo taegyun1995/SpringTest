@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.taegyun.test.ajax.dao.PensionDAO">
+
+	<select id="selectBooking" resultType="com.taegyun.test.ajax.model.Pension">
+		SELECT
+			`id`
+			, `name`
+			, `headcount`
+			, `day`
+			, `date`
+			, `phoneNumber`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`booking`
+	</select>
+	
+	<delete id="deleteBooking" parameterType="int">
+		DELETE FROM
+			`booking`
+		WHERE
+			`id` = #{id}
+	</delete>
+	
+	<insert id="insertBooking" parameterType="map">
+		INSERT INTO
+			`booking`
+		(
+			`name`
+			, `date`
+			, `day`
+			, `headcount`
+			, `phoneNumber`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUES
+		(
+			#{name}
+			, #{date}
+			, #{day}
+			, #{headcount}
+			, #{phoneNumber}
+			, #{state}
+			, now()
+			, now()
+		)
+	</insert>
+
+</mapper>

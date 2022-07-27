@@ -28,5 +28,10 @@ public class FavoriteBO {
 		
 		return favoriteDAO.selectFavoriteOverLap(url) != 0;
 	}
+	
+	public int fovoriteDelete(int id) {
+		
+		return favoriteDAO.deleteFavorite(id);
+	}
 
 }

@@ -73,9 +73,24 @@ public class FavoriteController {
 		result.put("overlap", favoriteBO.favoriteOverLap(url));
 		 
 		return result;
-		
 	}
 	
+	@ResponseBody
+	@GetMapping("/delete")
+	public Map<String, String> favorDelete(@RequestParam("id") int id) {
+		
+		int count = favoriteBO.fovoriteDelete(id);
+		
+		Map<String, String> map = new HashMap<>();
+		
+		if(count == 1) {
+			map.put("result", "success");
+		} else {
+			map.put("result", "fail");
+		}
+		
+		return map;
+	}
 	
 
 }

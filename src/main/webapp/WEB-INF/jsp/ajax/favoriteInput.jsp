@@ -11,7 +11,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="/favorstyle.css" type="text/css">
 </head>
 <body>
 	<div class="container">
@@ -22,9 +21,10 @@
 			<label> 주소 </label> <br>
 			<div class="d-flex">
 			<input type="text" class="form-control" name="url" id="url"/>
-			<button class="btn btn-info ml-2 overlapBtn" id="overlapBtn"> 중복확인 </button>
+			<button type="button" class="btn btn-info ml-2" id="overlapBtn"> 중복확인 </button>
 			</div>
-			<span id="overlaptext" class="text-danger">중복된 url 입니다.</span>
+			<span id="overlaptext" class="small text-danger d-none">중복된 url 입니다.</span>
+			<span id="nonoverlaptext" class="small text-info d-none">저장 가능한 url 입니다.</span>
 			<button type="button" class="btn btn-success btn-block mt-4" id="add"> 추가 </button>
 		<!--  </form>  -->
 	</div>
@@ -32,6 +32,16 @@
 	<script>
 		
 	$(document).ready(function(){
+		
+		var isCheckOverlap = false;
+		var isOverlap = false;
+		
+		$("#url").on("input", function(){
+			isCheckOverlap = false;
+			isOverlap = false;
+			$("#nonoverlaptext").addClass("d-none");
+			$("#overlaptext").addClass("d-none");
+		});
 		
 		$("#overlapBtn").on("click", function(){
 			
@@ -53,18 +63,25 @@
 				data:{"url":url},
 				
 				success:function(data){
+					
+					isCheckOverlap = true;
+					
 					if(data.overlap){
-						$("#overlaptext").css("display", "block");
+						isOverlap = true;
+						$("#overlaptext").removeClass("d-none");
+						$("#nonoverlaptext").addClass("d-none");
 					} else {
-						$("#overlaptext").css("display", "none");
+						isOverlap = false;
+						$("#nonoverlaptext").removeClass("d-none");
+						$("#overlaptext").addClass("d-none");
 					}
 				},
 				error:function(){
 					alert("에러 발생!!");
 				}
 			});
+			
 		});
-		
 		
 		$("#add").on("click", function(){
 			
@@ -86,6 +103,18 @@
 				return;
 			}
 			
+			// 중복 확인 진행 했는지
+			if(isCheckOverlap == false) { // 중복체크를 하지 않은 상태
+				alert("중복 체크 하세요!!");
+				return;
+			}
+			
+			// 중복된 상태인지
+			if(isOverlap) {
+				alert("url이 중복되었습니다.")
+				return;
+			}
+			
 			$.ajax({
 				url:"/ajax/favorite/insert",
 				type:"Post",
@@ -101,8 +130,6 @@
 				error:function() {
 					alert("에러발생!!");
 				}
-				
-				
 			});
 			
 		});

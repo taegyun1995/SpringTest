@@ -17,5 +17,7 @@ public interface FavoriteDAO {
 			,@Param("url") String url);
 	
 	public int selectFavoriteOverLap(@Param("url") String url);
+	
+	public int deleteFavorite(@Param("id") int id);
 
 }

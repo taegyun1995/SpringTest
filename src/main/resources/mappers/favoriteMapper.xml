@@ -44,7 +44,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			`url` = #{url}
 	</select>
 
-
+	<delete id="deleteFavorite" parameterType="int">
+		DELETE FROM
+			`url`
+		WHERE 
+			`id` = #{id}
+	</delete>
 
 
 </mapper>
