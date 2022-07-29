@@ -1,5 +1,6 @@
 package com.taegyun.test.ajax.bo;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,14 @@ public class PensionBO {
 		return pensionDAO.deleteBooking(id);
 	}
 	
-	public int bookingInsert(String name, String date, int day, int headcount, String phoneNumber, String state) {
+	public int bookingInsert(String name, Date date, int day, int headcount, String phoneNumber, String state) {
 		
 		return pensionDAO.insertBooking(name, date, day, headcount, phoneNumber, state);
+	}
+	
+	public Pension bookingLookup(String name, String phoneNumber) {
+		
+		return pensionDAO.lookupBooking(name, phoneNumber);
 	}
 
 }

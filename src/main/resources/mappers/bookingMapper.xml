@@ -53,5 +53,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, now()
 		)
 	</insert>
-
+	
+	<select id="lookupBooking" resultType="com.taegyun.test.ajax.model.Pension" parameterType="map">
+		SELECT
+			`id`
+			, `name`
+			, `date`
+			, `day`
+			, `headcount`
+			, `phoneNumber`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`booking`
+		WHERE
+			`name` = #{name} AND `phoneNumber` = #{phoneNumber}
+	</select>
+		
 </mapper>

@@ -48,8 +48,8 @@
 			
 			$("#date").datepicker({
 				minDate:0, 
-                dateFormat: "yy-mm-dd",
-                dayNamesMin:['월', '화', '수', '목', '금', '토', '일'],
+                dateFormat: "yy년 mm월 dd일",
+                dayNamesMin:['월', '화', '수', '목', '금', '토', '일']
 			});
 			
 			$("#addBtn").on("click", function(){
@@ -82,6 +82,11 @@
 				
 				if(phoneNumber == "") {
 					alert("전화번호를 입력해주세요");
+					return;
+				}
+				
+				if(!phoneNumber.startsWith("010")) {
+					alert("전화번호를 010부터 입력해주세요");
 					return;
 				}
 				

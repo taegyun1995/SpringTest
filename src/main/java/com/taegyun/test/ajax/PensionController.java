@@ -1,10 +1,12 @@
 package com.taegyun.test.ajax;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import com.taegyun.test.ajax.model.Pension;
 @RequestMapping("/ajax/pension")
 public class PensionController {
 	
+	// 메인 홈페이지 
 	@GetMapping("/main")
 	public String pensionView() {
 		
@@ -28,6 +31,7 @@ public class PensionController {
 	@Autowired
 	private PensionBO pensionBO;
 	
+	// 예약 목록보기
 	@GetMapping("/list")
 	public String bookingList(Model model) {
 		
@@ -37,6 +41,7 @@ public class PensionController {
 		return "ajax/pensionList";
 	}
 	
+	// 예약 리스트 삭제하기
 	@ResponseBody
 	@GetMapping("/delete")
 	public Map<String, String> bookingDelete(@RequestParam("id") int id) {
@@ -54,17 +59,20 @@ public class PensionController {
 		return map;
 	}
 	
+	// 예약하기 화면
 	@GetMapping("/input")
 	public String bookingInput() {
 		
 		return "ajax/pensionInput";
 	}
 	
+	// 예약하기
 	@ResponseBody
 	@GetMapping("/insert")
 	public Map<String, String> bookingInsert(
 			@RequestParam("name") String name
-			, @RequestParam("date") String date
+			, @DateTimeFormat(pattern="yyyy년 MM월 dd일")
+			  @RequestParam("date") Date date
 			, @RequestParam("day") int day
 			, @RequestParam("headcount") int headcount
 			, @RequestParam("phoneNumber") String phoneNumber
@@ -81,6 +89,17 @@ public class PensionController {
 		}
 		
 		return map;
+	}
+	
+	// 조회하기 api
+	@ResponseBody
+	@GetMapping("/lookup")
+	public Pension bookingAlert(@RequestParam("name") String name
+							  , @RequestParam("phoneNumber") String phoneNumber) {
+		
+		Pension pension = pensionBO.bookingLookup(name, phoneNumber);
+		
+		return pension;
 	}
 
 }

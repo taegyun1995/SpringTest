@@ -40,20 +40,22 @@
 				
 				<tbody>
 				<c:forEach var="reservation" items="${book}">
-				<fmt:parseDate value="${reservation.date}" pattern="yyyy-MM-dd" var="bookingdate" />
 					<tr>
 						<td> ${reservation.name } </td>
-						<td> <fmt:formatDate value="${bookingdate}" pattern="yyyy년 M월 dd일" /> </td>
-						<td> ${reservation.day } </td>
-						<td> ${reservation.headcount } </td>
+						<td> <fmt:formatDate value="${reservation.date}" pattern="yyyy년 M월 d일" /> </td>
+						<td> ${reservation.day }일 </td>
+						<td> ${reservation.headcount }명 </td>
 						<td> ${reservation.phoneNumber } </td>
 						<c:choose>
 							<c:when test="${reservation.state eq '대기중'}">
-							<td class="text-info"> ${reservation.state } </td>
+								<td class="text-info"> ${reservation.state } </td>
 							</c:when>
 							<c:when test="${reservation.state eq '확정'}">
-							<td class="text-success"> ${reservation.state } </td>
+								<td class="text-success"> ${reservation.state } </td>
 							</c:when>
+							<c:otherwise>
+								<td> ${reservation.state } </td>
+							</c:otherwise>
 						</c:choose>
 						<td> <button type="button" class="delete-Btn btn btn-danger" data-pension-id="${reservation.id}"> 삭제 </button> </td>
 					</tr>
@@ -77,7 +79,6 @@
 					url:"/ajax/pension/delete",
 					type:"get",
 					data:{"id":pensionId},
-					
 					success:function(data){
 						if(data.result == "success") {
 							location.reload();
@@ -88,7 +89,6 @@
 					error:function() {
 						alert("에러발생!!");
 					}
-					
 				}); 
 				
 			}); 

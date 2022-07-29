@@ -1,5 +1,6 @@
 package com.taegyun.test.ajax.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -15,10 +16,12 @@ public interface PensionDAO {
 	public int deleteBooking(@Param("id") int id);
 	
 	public int insertBooking(@Param("name") String name
-							, @Param("date") String date
+							, @Param("date") Date date
 							, @Param("day") int day
 							, @Param("headcount") int headcount
 							, @Param("phoneNumber") String phoneNumber
 							, @Param("state") String state);
-
+	
+	public Pension lookupBooking(@Param("name") String name
+						   , @Param("phoneNumber") String phoneNumber);
 }

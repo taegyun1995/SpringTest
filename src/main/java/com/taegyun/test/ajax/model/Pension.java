@@ -8,7 +8,7 @@ public class Pension {
 	private String name;
 	private int headcount;
 	private int day;
-	private String date;
+	private Date date;
 	private String phoneNumber;
 	private String state;
 	private Date createdAt;
@@ -38,10 +38,10 @@ public class Pension {
 	public void setDay(int day) {
 		this.day = day;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getPhoneNumber() {
@@ -69,6 +69,4 @@ public class Pension {
 		this.updatedAt = updatedAt;
 	}
 	
-	
-
 }
